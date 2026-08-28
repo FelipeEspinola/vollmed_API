@@ -1,5 +1,8 @@
 package br.com.sistema.api.model.medico;
 
-public class Especialidade {
-    
+public enum Especialidade {
+    ORTOPEDIA,
+    CARDIOLOGIA,
+    GINECOLOGIA,
+    DERMATOLOGIA;
 }
