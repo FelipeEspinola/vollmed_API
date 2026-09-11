@@ -2,6 +2,14 @@ package br.com.sistema.api.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.sistema.api.model.medico.Medico;
+import br.com.sistema.api.model.paciente.Paciente;
+import br.com.sistema.api.model.paciente.PacienteRepository;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -11,9 +19,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PacienteController { 
     //GET Request -> Response -> EX: Tela home
 
+    @Autowired 
+    private PacienteRepository pacienteRepository;
+
     @GetMapping("/") //Aponta para Localhost:8080/paciente
-    public String exibirHome() {
-        return "a";
+    public List<Paciente> listarPacientes(){
+        return pacienteRepository.findAll();
+    }
     }
     
 
@@ -23,6 +35,6 @@ public class PacienteController {
     //DELETE
     
     // CRUD 
-}
+
 
 

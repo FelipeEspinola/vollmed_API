@@ -1,6 +1,7 @@
 package br.com.sistema.api.model.paciente;
 
 import br.com.sistema.api.model.endereco.Endereco;
+import br.com.sistema.api.model.medico.DadosCadastroMedico;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,5 +24,14 @@ public class Paciente {
 
     @Embedded   //  Utilizando na classe que representa a tabela principal no BD
     private Endereco endereco;
+
+    // Método Construtor recebendo o DTO DadosCadastroMedico e conectando a um objeto médico
+    public Paciente(DadosCadastroPaciente dados){
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.telefone = dados.telefone();
+        this.cpf = dados.cpf();
+        this.endereco = new Endereco(dados.endereco());
+    }
     
 }
